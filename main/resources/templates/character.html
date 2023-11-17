@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Page Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url('https://wallpapercave.com/wp/wp2770237.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .content {
+            flex: 1;
+            padding: 1px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content h1.center-text {
+            text-align: center;
+            color: white;
+            font-family: "Yu Gothic Medium", sans-serif;
+        }
+
+        .sidebar {
+            width: 0;
+            overflow: hidden;
+            transition: width 0.2s ease;
+            background-color: rgba(85, 85, 85, 0.9);
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .sidebar-content {
+            padding: 20px;
+            margin-top: 65px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-family: "Yu Gothic Medium", sans-serif;
+        }
+
+        .open-button {
+            position: fixed;
+            top: 5px;
+            left: 5px;
+            background-color: transparent;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 45px;
+        }
+
+        .sidebar h2 {
+            margin-top: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        .middle-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 300px;
+            background-color: rgba(85, 85, 85, 0.9);
+            color: white;
+            text-align: center;
+            font-size: 100px;
+            line-height:  30px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .middle-box a {
+            color: white;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="sidebar" id="mySidebar">
+    <div class="sidebar-content">
+        <div class="open-button" onclick="toggleSidebar()">&#8801;</div>
+        <h2><a th:href="@{/}">Home</a></h2>
+        <h2><a th:href="@{/}">Game Rules</a></h2>
+        <h2><a th:href="@{/battle_ground}">Battle Ground</a></h2>
+        <h2><a th:href="@{/character}">Character Creation</a></h2>
+    </div>
+</div>
+
+<div class="content">
+    <h1 class="center-text">Create your character!</h1>
+</div>
+
+<div class="middle-box">
+    <h2><a th:href="@{character_creation}">&#43;</a></h2>
+</div>
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById("mySidebar");
+        if (sidebar.style.width === "200px") {
+            sidebar.style.width = "0";
+        } else {
+            sidebar.style.width = "200px";
+        }
+    }
+</script>
+</body>
+</html>
